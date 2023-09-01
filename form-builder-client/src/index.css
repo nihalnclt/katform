@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input {
+    display: block;
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    outline: none;
+    border-radius: 0.25rem;
+    background-color: #fff;
+}
+
+button {
+    height: 40px;
+    /* background-color: #002366; */
+    border-radius: 0.25rem;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}

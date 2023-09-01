@@ -1,0 +1,368 @@
+{
+    "id": "64f217bbc9fd839fd1367c07",
+    "name": "sda",
+    "fields": [
+        {
+            "id": "e64f217c0f6bc132e70dab19e",
+            "fieldType": "text",
+            "value": "<p style=\"text-align: left;\"><span style=\"font-size: 30pt;\"><strong>sda</strong></span></p>\n<p style=\"line-height: 24pt; text-align: left;\"><span style=\"font-size: 12pt; color: #7e8c8d;\">Sub Header</span></p>",
+            "styles": { "margin": "10px 0", "font-weight": 400 },
+            "subType": "form-heading",
+            "configs": { "data": [] }
+        },
+        {
+            "id": "e64f217c5a26a5b23c51b3869",
+            "fieldType": "name",
+            "label": { "text": "Full Name", "alignment": "left" },
+            "attributes": {
+                "type": "text",
+                "placeholder": "Enter your Information",
+                "maxlength": 500
+            },
+            "configs": {
+                "nameType": "input-field",
+                "repeatingCount": 1,
+                "nameAlignment": "horizontal",
+                "queryParameter": false,
+                "query": ""
+            },
+            "mappedId": "t10",
+            "helper": { "type": "Below Input", "text": "This is a helper text" }
+        },
+        {
+            "id": "e64f217c79a7d1bd34cb01bfc",
+            "fieldType": "address",
+            "label": { "text": "Address", "alignment": "left" },
+            "attributes": { "placeholder": "Enter your Information", "required": true },
+            "configs": { "addressType": "text-area", "repeatingCount": 1 },
+            "mappedId": "t2"
+        },
+        {
+            "id": "e64f217c0f74f0b9eb8cf9068",
+            "configs": { "captchaType": "reCaptchaV3" },
+            "fieldType": "captcha"
+        },
+        { "id": "e64f217c04f9071c300c265a2", "fieldType": "button", "text": "Submit" }
+    ],
+    "fieldStyles": {
+        "label": {
+            "color": "#4a4a4a",
+            "text-transform": "none",
+            "text-shadow": "0px 0px 0px transparent",
+            "font-size": "14px"
+        },
+        "input": {
+            "color": "#000",
+            "box-shadow": "0px 0px 0px 0px #000",
+            "font-weight": "400",
+            "font-size": "14px",
+            "border-bottom-color": "#e8e8e8",
+            "border-bottom-width": "1px",
+            "border-bottom-style": "solid",
+            "border-left-color": "#e8e8e8",
+            "border-left-style": "solid",
+            "border-left-width": "1px",
+            "border-right-color": "#e8e8e8",
+            "border-right-style": "solid",
+            "border-right-width": "1px",
+            "border-top-color": "#e8e8e8",
+            "border-top-style": "solid",
+            "border-top-width": "1px"
+        },
+        "helper": {
+            "font-weight": "normal",
+            "font-size": "10px",
+            "text-transform": "none",
+            "color": "#fff"
+        },
+        "helper2": { "color": "#000" }
+    },
+    "folderId": null,
+    "styles": {
+        "border-top-color": "#d9dfe8",
+        "border-right-color": "#d9dfe8",
+        "border-bottom-color": "#d9dfe8",
+        "border-left-color": "#d9dfe8",
+        "border-top-style": "solid",
+        "border-right-style": "solid",
+        "border-bottom-style": "solid",
+        "border-left-style": "solid",
+        "border-top-width": "1px",
+        "border-right-width": "1px",
+        "border-bottom-width": "1px",
+        "border-left-width": "1px",
+        "box-shadow": "0px 0px 0px 0px #000"
+    },
+    "configs": {
+        "requireVerification": false,
+        "activeTemplate": {
+            "id": "e64f217bd4be22239aa6a27b7",
+            "name": "form-design-15",
+            "thankyou": "thankyou-design-1",
+            "preview": "https://assets.frms.link/templates/Form15.png",
+            "configs": [
+                {
+                    "accessor": "useBrandLogo",
+                    "valuePath": "configs.template.configs.useBrandLogo",
+                    "fieldType": "toggle",
+                    "label": "Use Brand Logo",
+                    "tab": "CONTENT",
+                    "purpose": "brandLogo",
+                    "initial": false
+                },
+                {
+                    "fieldType": "image-picker",
+                    "valuePath": "configs.template.configs.logoForm",
+                    "label": "Form Logo",
+                    "accessor": "logoForm",
+                    "tab": "CONTENT",
+                    "initial": "",
+                    "disabledWhen": { "configs.template.configs.useBrandLogo": true }
+                },
+                { "fieldType": "customPalette", "tab": "COLORS", "label": "Custom Palette" },
+                {
+                    "accessor": "bg1",
+                    "valuePath": "configs.template.configs.bg1",
+                    "fieldType": "color-picker",
+                    "tab": "COLORS",
+                    "label": "Theme Color",
+                    "initial": "rgba(243,243,254,1.0)",
+                    "left": true
+                },
+                {
+                    "accessor": "fbg",
+                    "valuePath": "configs.template.configs.fbg",
+                    "fieldType": "color-picker",
+                    "tab": "COLORS",
+                    "label": "Form Background",
+                    "initial": "rgba(255,255,255,1.0)",
+                    "left": true
+                },
+                {
+                    "accessor": "question",
+                    "valuePath": "configs.template.configs.question",
+                    "fieldType": "color-picker",
+                    "tab": "COLORS",
+                    "label": "Question",
+                    "initial": "rgba(1,8,19,1)",
+                    "left": true
+                },
+                {
+                    "accessor": "answerT",
+                    "valuePath": "configs.template.configs.answerT",
+                    "fieldType": "color-picker",
+                    "tab": "COLORS",
+                    "label": "Answer text",
+                    "initial": "rgba(0,0,0,1)",
+                    "left": true
+                },
+                {
+                    "accessor": "answerB",
+                    "valuePath": "configs.template.configs.answerB",
+                    "fieldType": "color-picker",
+                    "tab": "COLORS",
+                    "label": "Answer Background ",
+                    "initial": "rgba(255,255,255,1.0)",
+                    "left": true
+                },
+                {
+                    "accessor": "active",
+                    "valuePath": "configs.template.configs.active",
+                    "fieldType": "color-picker",
+                    "tab": "COLORS",
+                    "label": "Active color",
+                    "initial": "rgba(46,105,255,1)",
+                    "left": true
+                },
+                {
+                    "accessor": "inactive",
+                    "valuePath": "configs.template.configs.inactive",
+                    "fieldType": "color-picker",
+                    "tab": "COLORS",
+                    "label": "Inactive color",
+                    "initial": "rgba(184,189,201,1)",
+                    "left": true
+                },
+                {
+                    "accessor": "helperT",
+                    "valuePath": "configs.template.configs.helperT",
+                    "fieldType": "color-picker",
+                    "tab": "COLORS",
+                    "label": "Helper text",
+                    "initial": "rgba(46,105,255,1)",
+                    "left": true
+                },
+                {
+                    "accessor": "buttonB",
+                    "valuePath": "configs.template.configs.buttonB",
+                    "fieldType": "color-picker",
+                    "tab": "COLORS",
+                    "label": "Button Background",
+                    "initial": "rgba(46,105,255,1.0)",
+                    "left": true
+                },
+                {
+                    "accessor": "buttonT",
+                    "valuePath": "configs.template.configs.buttonT",
+                    "fieldType": "color-picker",
+                    "tab": "COLORS",
+                    "label": "Button text",
+                    "initial": "rgba(255,255,255,1.0)",
+                    "left": true
+                },
+                {
+                    "accessor": "errorColor",
+                    "valuePath": "configs.template.configs.errorColor",
+                    "fieldType": "color-picker",
+                    "tab": "COLORS",
+                    "label": "Error Color",
+                    "initial": "rgba(255,78,78,1.0)",
+                    "left": true
+                },
+                {
+                    "defaultColors": {
+                        "inactive": "rgba(184,189,201,1)",
+                        "active": "rgba(46,105,255,1)",
+                        "error": "rgba(255,78,78,1.0)",
+                        "secondary": "rgba(75,64,229,1.0)",
+                        "question": "rgba(1,8,19,1)",
+                        "bg1": "rgba(243,243,254,1.0)",
+                        "fbg": "rgba(255,255,255,1.0)",
+                        "buttonB": "rgba(46,105,255,1.0)",
+                        "buttonT": "rgba(255,255,255,1.0)",
+                        "errorColor": "rgba(255,78,78,1.0)",
+                        "answerT": "rgba(0,0,0,1)",
+                        "answerB": "rgba(255,255,255,1.0)",
+                        "helperT": "rgba(46,105,255,1)",
+                        "text": "rgba(0,0,0,1.0)",
+                        "palletteNumber": 15
+                    },
+                    "tab": "COLORS",
+                    "label": "Reset Color",
+                    "fieldType": "resetColors"
+                },
+                {
+                    "accessor": "themeFont",
+                    "valuePath": "configs.template.configs.themeFont",
+                    "fieldType": "fontPicker",
+                    "tab": "FONTS",
+                    "addFonts": true,
+                    "label": "Theme Text",
+                    "text": "Theme",
+                    "initial": "'Mulish', sans-serif",
+                    "style": { "fontSize": "14px" },
+                    "left": true
+                },
+                {
+                    "accessor": "questionFont",
+                    "valuePath": "configs.template.configs.questionFont",
+                    "fieldType": "fontPicker",
+                    "tab": "FONTS",
+                    "addFonts": true,
+                    "label": "Question Text",
+                    "text": "Question",
+                    "initial": "'Inter', sans-serif",
+                    "style": { "fontSize": "14px" },
+                    "left": true
+                },
+                {
+                    "accessor": "answerFont",
+                    "valuePath": "configs.template.configs.answerFont",
+                    "fieldType": "fontPicker",
+                    "tab": "FONTS",
+                    "addFonts": true,
+                    "label": "Answer Text",
+                    "text": "Answer",
+                    "initial": "'Inter', sans-serif",
+                    "style": { "fontSize": "14px" },
+                    "left": true
+                },
+                {
+                    "accessor": "helperFont",
+                    "valuePath": "configs.template.configs.helperFont",
+                    "fieldType": "fontPicker",
+                    "tab": "FONTS",
+                    "addFonts": true,
+                    "label": "Helper Text",
+                    "text": "Helper",
+                    "initial": "'Inter', sans-serif",
+                    "style": { "fontSize": "14px" },
+                    "left": true
+                },
+                {
+                    "accessor": "buttonFont",
+                    "valuePath": "configs.template.configs.buttonFont",
+                    "fieldType": "fontPicker",
+                    "tab": "FONTS",
+                    "addFonts": true,
+                    "label": "Button Text",
+                    "text": "Button",
+                    "initial": "'Inter', sans-serif",
+                    "style": { "fontSize": "14px" },
+                    "left": true
+                },
+                {
+                    "defaultColors": {},
+                    "tab": "FONTS",
+                    "label": "Reset Fonts",
+                    "fieldType": "resetColors"
+                },
+                {
+                    "accessor": "cssEditor",
+                    "valuePath": "configs.template.configs.cssEditor",
+                    "fieldType": "cssEditor",
+                    "tab": "Custom CSS",
+                    "initial": "",
+                    "left": true,
+                    "label": "CSS Editor"
+                }
+            ]
+        },
+        "template": {
+            "name": "form-design-15",
+            "configs": {
+                "logoForm": "https://assets.frms.link/bundles/staging/logoipsum-logo-8.svg",
+                "bg1": "rgba(243,243,254,1.0)",
+                "fbg": "rgba(255,255,255,1.0)",
+                "question": "rgba(1,8,19,1)",
+                "answerT": "rgba(0,0,0,1)",
+                "answerB": "rgba(255,255,255,1.0)",
+                "active": "rgba(46,105,255,1)",
+                "inactive": "rgba(184,189,201,1)",
+                "helperT": "rgba(46,105,255,1)",
+                "buttonB": "rgba(46,105,255,1.0)",
+                "buttonT": "rgba(255,255,255,1.0)",
+                "palletteNumber": 15
+            }
+        },
+        "enableWelcome": false,
+        "enableThankyou": true,
+        "inBrowserDataStorage": false,
+        "mappedIdCount": { "t": 10, "n": 0, "d": 0, "m": 0 },
+        "isKycRequired": false
+    },
+    "integrations": [],
+    "thankyou": [
+        {
+            "id": "e64f217bd97642e4aa9b310d6",
+            "fieldType": "image",
+            "attributes": { "src": "https://assets.frms.link/editor-assets/icons/tick-filled.svg" },
+            "styles": { "width": "10%" }
+        },
+        {
+            "id": "e64f217bd2ba87587d2cf5237",
+            "fieldType": "text",
+            "value": "<p style=\"text-align: center;\">Your submission has been successfully recorded.</p>",
+            "styles": { "margin": "10px 0", "font-size": "20px", "line-height": "20px" }
+        }
+    ],
+    "welcome": [
+        {
+            "id": "e64f217bd97082519dc8589c3",
+            "fieldType": "text",
+            "value": "<p style=\"text-align: center;\">Welcome</p>",
+            "styles": { "margin": "10px 0", "font-size": "20px", "line-height": "20px" }
+        }
+    ],
+    "favouriteFields": []
+}
