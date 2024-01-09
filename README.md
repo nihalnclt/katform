@@ -1,1 +1,2 @@
-# open soruce form builder
+# katform
+katform is an opensource form builder
