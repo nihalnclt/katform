@@ -1,18 +1,11 @@
-import { NextFunction, Request, Response } from "express";
-import AppError from "../../../utils/appErrors";
+import { Request, Response, NextFunction } from "express";
 
+import { CustomError } from "../../common/errors";
 
-const ErrorHandlingMidleware = (err:AppError, req:Request, res:Response, nexe: NextFunction ) => {
-    err.statusCode = err.statusCode || 500;
-    err.status = err.status || 'error';
-    if(err.statusCode === 400 ) {
-        res.status (err.statusCode).json({ errors: err.status, errorMessage: err.message })
-    }else {
-        res.status(err.statusCode).json({
-            status : err.status,
-            message: err.message
-        })
-    }
-}
+export const errorMiddleware = (err: Error, req: Request, res: Response, next: NextFunction) => {
+  if (err instanceof CustomError) {
+    return res.status(err.statusCode).json({ errors: err.serializeErrors() });
+  }
 
-export default ErrorHandlingMidleware
+  res.status(500).json({ errors: [{ message: err?.message || "something went wrong" }] });
+};

@@ -7,13 +7,13 @@ import { protectedRoutes } from "./protectedRoutes";
 import { publicRoutes } from "./publicRoutes";
 
 export const AppRoutes = () => {
-    // const auth = useAuth();
+  // const auth = useAuth();
 
-    // const commonRoutes = [{ path: "/", element: <Landing /> }];
+  //   const commonRoutes = [{ path: "/", element: <div>Hello</div> }];
 
-    // const routes = auth.user ? protectedRoutes : publicRoutes;
+  // const routes = auth.user ? protectedRoutes : publicRoutes;
 
-    const element = useRoutes([...routes, ...commonRoutes]);
+  const element = useRoutes([...publicRoutes, ...protectedRoutes]);
 
-    return <>{element}</>;
+  return <>{element}</>;
 };
