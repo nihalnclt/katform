@@ -1,7 +1,6 @@
 import express, { Application } from "express";
 import morgan from "morgan";
 import cors, { CorsOptions } from "cors";
-// import cookieParser from "cookie-parser";
 import compression from "compression";
 import helmet from "helmet";
 
@@ -27,7 +26,6 @@ const expressConfig = (app: Application) => {
     })
   );
   app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
-  //   app.use(cookieParser());
   app.use(morgan("dev"));
   app.use(express.static("public"));
   app.use(cors(corsOption));

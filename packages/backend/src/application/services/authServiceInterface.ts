@@ -6,9 +6,9 @@ const authServiceInterface = (service: ReturnType<authServiceImplType>) => {
         return;
     };
 
-    // const comparePassword = (password: string, encriptPassword: string) => {
-    //     return service.ComparePassword(password, encriptPassword);
-    // };
+    const comparePassword = (password: string, encriptPassword: string) => {
+        return service.ComparePassword(password, encriptPassword);
+    };
 
     // const encriptConfirmPassword = (confirmPassword: string) => {
     //     return service.encrypt(confirmPassword);
@@ -44,5 +44,5 @@ const authServiceInterface = (service: ReturnType<authServiceImplType>) => {
     };
 };
 
-export type authServiceInterfaceType = typeof authServiceInterface;
+export type AuthServiceInterfaceType = typeof authServiceInterface;
 export default authServiceInterface;

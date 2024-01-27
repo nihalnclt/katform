@@ -1,7 +1,7 @@
 import { Mongoose } from "mongoose";
 
 import envConfig from "../../../../config/config";
-import { MongoDbOptions } from "../../../../core/types/types";
+import { MongoDbOptions } from "../../../../core/types";
 import { logger } from "../../../common/winston";
 
 export default class MongoDb {

@@ -1,37 +1,22 @@
 import mongoose from "mongoose";
 
-interface FormField {
-  label?: string;
-  ref: string;
-  properties: {};
-  validations: {
-    required: boolean;
-  };
-  fieldType: string;
-}
-
-interface FormAttrs {
-  title: string;
-  formId: string;
-  fields: FormField[];
-}
+import { FormField } from "../../../../core/types";
 
 interface FormDoc extends mongoose.Document {
-  title: string;
+  formName: string;
   formId: string;
   fields: FormField[];
+  isDeleted: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
 
-interface FormModel extends mongoose.Model<FormDoc> {
-  build(attrs: FormAttrs): FormDoc;
-}
+interface FormModel extends mongoose.Model<FormDoc> {}
 
 const formSchema = new mongoose.Schema(
   {
-    title: { type: String, required: true },
-    formId: { type: String, required: true },
+    formName: { type: String, required: true },
+    formId: { type: String, required: true, unique: true },
     fields: {
       type: [
         {
@@ -41,11 +26,17 @@ const formSchema = new mongoose.Schema(
           validations: {
             required: { type: Boolean, required: true },
           },
-          fieldType: { type: String, required: true, lowercase: true, enum: [""] },
+          fieldType: {
+            type: String,
+            required: true,
+            lowercase: true,
+            enum: ["short-text", "long-text"],
+          },
         },
       ],
       required: true,
     },
+    isDeleted: { type: Boolean, requaired: true, default: false },
   },
   {
     timestamps: true,
@@ -53,14 +44,11 @@ const formSchema = new mongoose.Schema(
       transform(doc, ret) {
         ret.id = ret._id;
         delete ret._id;
+        delete ret.__v;
       },
     },
   }
 );
-
-// formSchema.statics.build = (attrs: OrderAttrs) => {
-//   return new Form(attrs);
-// };
 
 const Form = mongoose.model<FormDoc, FormModel>("Form", formSchema);
 

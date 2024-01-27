@@ -21,7 +21,7 @@ export const nodemailerService = async () => {
                 subject: "Phonix Online",
                 text: "Successfully Registered Your Account",
             });
-            return "email set successfully";
+            return "email sent successfully";
         } catch (err) {
             console.log(err, "email error");
         }
