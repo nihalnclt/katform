@@ -1,6 +1,6 @@
 import { Application } from "express";
 
-import usersRouter from "./user/useresRouter";
+import usersRouter from "./user/usersRouter";
 import formsRouter from "./form/formsRouter";
 
 const router = (app: Application) => {

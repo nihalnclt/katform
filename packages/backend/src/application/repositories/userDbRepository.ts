@@ -1,9 +1,11 @@
+import { CreateUser } from "../../core/types";
 import { UserDbRepositoryImplType } from "../../frameworks/database/mongodb/repositories/userDbRepositoryImpl";
 
 const userDbRepository = (repository: ReturnType<UserDbRepositoryImplType>) => {
-  // const findById = (id: string) => repository.findById(id);
+  const findByEmail = (email: string) => repository.findByEmail(email);
+  const create = (user: CreateUser) => repository.create(user);
 
-  return {};
+  return { findByEmail, create };
 };
 
 export default userDbRepository;

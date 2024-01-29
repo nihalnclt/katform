@@ -16,6 +16,9 @@ const usersRouter = () => {
     authServiceImpl
   );
 
+  router.route("/auth/signup").post(controller.signupUser);
+  router.route("/auth/login").post(controller.loginUser);
+
   return router;
 };
 

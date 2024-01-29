@@ -1,47 +1,22 @@
-import { authServiceImplType } from "../../frameworks/services/authServiceImpl";
+import { AuthServiceImplType } from "../../frameworks/services/authServiceImpl";
 
-const authServiceInterface = (service: ReturnType<authServiceImplType>) => {
-    const encriptPassword = (password: string) => {
-        // return service.encrypt(password);
-        return;
-    };
+const authServiceInterface = (service: ReturnType<AuthServiceImplType>) => {
+  const encryptPassword = (password: string) => service.encryptPassword(password);
+  const comparePassword = (password: string, encriptPassword: string) =>
+    service.comparePassword(password, encriptPassword);
+  const generateAccessToken = (payload: string) => service.generateAccessToken(payload);
+  const verifyAccessToken = (token: string) => service.verifyAccessToken(token);
+  const generateRefreshToken = (payload: string) => service.generateRefreshToken(payload);
+  const verifyRefreshToken = (token: string) => service.verifyRefreshToken(token);
 
-    const comparePassword = (password: string, encriptPassword: string) => {
-        return service.ComparePassword(password, encriptPassword);
-    };
-
-    // const encriptConfirmPassword = (confirmPassword: string) => {
-    //     return service.encrypt(confirmPassword);
-    // };
-
-    // const compareConfirmPassword = (confirmPassword: string, encriptConfirmPassword: string) => {
-    //     return service.ComparePassword(confirmPassword, encriptConfirmPassword);
-    // };
-
-    // const generateAccessToken = async (payload: string) => {
-    //     const token = jwt.sign({ payload }, dotenvConfig.access_token_key, { expiresIn: "30s" });
-    //     return token;
-    // };
-
-    // const verifyAccessToken = async (token: string) => {
-    //     const verifyAccessToken = jwt.verify(token, dotenvConfig.access_token_key);
-    //     return verifyAccessToken;
-    // };
-
-    // const generateRefreshToken = async (payload: string) => {
-    //     const Refreshtoken = jwt.sign({ payload }, dotenvConfig.refresh_token_key, {
-    //         expiresIn: "1w",
-    //     });
-    //     return Refreshtoken;
-    // };
-
-    // const verifyRefreshToken = async (token: string) => {
-    //     return jwt.verify(token, dotenvConfig.refresh_token_key);
-    // };
-
-    return {
-        encriptPassword,
-    };
+  return {
+    encryptPassword,
+    comparePassword,
+    generateAccessToken,
+    verifyAccessToken,
+    generateRefreshToken,
+    verifyRefreshToken,
+  };
 };
 
 export type AuthServiceInterfaceType = typeof authServiceInterface;

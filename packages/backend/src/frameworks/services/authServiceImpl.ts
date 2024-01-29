@@ -1,23 +1,44 @@
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+import envConfig from "../../config/config";
 
 const authServiceImpl = () => {
-  // const encrypt = async (password: string) => {
-  //     const genSalt = await bcrypt.genSalt(10);
-  //     password = await bcrypt.hash(password, genSalt);
-  //     return password;
-  // };
-
-  const ComparePassword = async (password: string, encriptPassword: string) => {
-    const status = await bcrypt.compare(password, encriptPassword);
-    return status;
+  const encryptPassword = async (password: string) => {
+    const genSalt = await bcrypt.genSalt(10);
+    return bcrypt.hash(password, genSalt);
   };
 
-  // const verifyAccessToken = async (token: string) =>{
-  //     const response = await jwt.verify(token, dotenvConfig.refresh_token_key)
-  //     return response
-  // }
+  const comparePassword = async (password: string, encriptPassword: string) => {
+    return await bcrypt.compare(password, encriptPassword);
+  };
 
-  return { ComparePassword };
+  const generateAccessToken = async (payload: string) => {
+    return jwt.sign({ payload }, envConfig.accessTokenKey, { expiresIn: "30s" });
+  };
+
+  const verifyAccessToken = async (token: string) => {
+    return jwt.verify(token, envConfig.accessTokenKey);
+  };
+
+  const generateRefreshToken = async (payload: string) => {
+    return jwt.sign({ payload }, envConfig.refreshTokenKey, {
+      expiresIn: "1w",
+    });
+  };
+
+  const verifyRefreshToken = async (token: string) => {
+    return jwt.verify(token, envConfig.refreshTokenKey);
+  };
+
+  return {
+    encryptPassword,
+    comparePassword,
+    generateAccessToken,
+    verifyAccessToken,
+    generateRefreshToken,
+    verifyRefreshToken,
+  };
 };
 
 export type AuthServiceImplType = typeof authServiceImpl;

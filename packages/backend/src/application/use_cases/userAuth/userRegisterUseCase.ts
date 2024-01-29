@@ -1,3 +1,4 @@
+import { CreateUser } from "../../../core/types";
 import { BadRequestError } from "../../../frameworks/common/errors";
 import { UserDbRepositoryImplType } from "../../../frameworks/database/mongodb/repositories/userDbRepositoryImpl";
 import { AuthServiceImplType } from "../../../frameworks/services/authServiceImpl";
@@ -28,5 +29,26 @@ export const userRegisterUseCase = async ({
     throw new BadRequestError("Email already in use");
   }
 
-  return userRepository.create();
+  const newUser: CreateUser = {
+    name,
+    email,
+    password: await authService.encryptPassword(password),
+  };
+
+  const user = await userRepository.create(newUser);
+
+  const tokenPayload = {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+  };
+
+  const accessToken = await authService.generateAccessToken(JSON.stringify(tokenPayload));
+  const refreshToken = await authService.generateRefreshToken(JSON.stringify(tokenPayload));
+
+  return {
+    user,
+    accessToken,
+    refreshToken,
+  };
 };
