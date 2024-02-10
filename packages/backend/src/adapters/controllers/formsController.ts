@@ -16,7 +16,7 @@ const formsController = (
   const addNewForm = (req: Request, res: Response, next: NextFunction) => {
     const { formName } = req.body;
 
-    createFormUseCase({ formName, formRepository: dbRepository })
+    createFormUseCase({ user: req.user, formName, formRepository: dbRepository })
       .then((newForm) => {
         return res.status(HttpStatus.CREATED).json(newForm);
       })
@@ -27,7 +27,7 @@ const formsController = (
     const { formId } = req.params;
     const { fields } = req.body;
 
-    updateFormFieldsUseCase({ formId, fields, formRepository: dbRepository })
+    updateFormFieldsUseCase({ user: req.user, formId, fields, formRepository: dbRepository })
       .then((updatedForm) => {
         return res.status(HttpStatus.OK).json({ message: "Ok", data: updatedForm });
       })

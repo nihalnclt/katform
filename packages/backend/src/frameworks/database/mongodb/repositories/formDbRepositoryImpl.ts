@@ -3,11 +3,12 @@ import { Form } from "../models";
 
 const formDbRepositoryImpl = () => {
   const findByFormId = (formId: string) => {
-    return Form.findOne({ formId, isDeleted: false }).select("formId").lean();
+    return Form.findOne({ formId, isDeleted: false }).lean();
   };
 
   const create = (formEntity: CreateForm) => {
     const newForm = new Form({
+      userId: formEntity.userId,
       formName: formEntity.formName,
       formId: formEntity.formId,
       fields: [],

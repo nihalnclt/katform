@@ -3,12 +3,14 @@ import { FormDbRepositoryImplType } from "../../../frameworks/database/mongodb/r
 import { updateFormFieldsValidator } from "../validators/formValidator";
 
 interface updateFormFieldsUseCaseType {
+  user: any;
   formId: string;
   fields: [];
   formRepository: ReturnType<FormDbRepositoryImplType>;
 }
 
 export const updateFormFieldsUseCase = async ({
+  user,
   formId,
   fields,
   formRepository,
@@ -20,7 +22,7 @@ export const updateFormFieldsUseCase = async ({
   }
 
   const form = await formRepository.findByFormId(formId);
-  if (!form) {
+  if (!form || form.userId?.toString() !== user.id?.toString()) {
     throw new NotFoundError(`no forms found with ${formId}`);
   }
 

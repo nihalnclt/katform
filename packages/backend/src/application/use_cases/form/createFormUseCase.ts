@@ -5,11 +5,16 @@ import { generateUniqueId } from "../../../utils";
 import { createFormValidator } from "../validators/formValidator";
 
 interface createFormUseCaseType {
+  user: any;
   formName: string;
   formRepository: ReturnType<FormDbRepositoryImplType>;
 }
 
-export const createFormUseCase = async ({ formName, formRepository }: createFormUseCaseType) => {
+export const createFormUseCase = async ({
+  user,
+  formName,
+  formRepository,
+}: createFormUseCaseType) => {
   const validationResult = createFormValidator({ formName });
 
   if (validationResult.error) {
@@ -17,6 +22,7 @@ export const createFormUseCase = async ({ formName, formRepository }: createForm
   }
 
   const newForm: CreateForm = {
+    userId: user.id,
     formName,
     formId: generateUniqueId(7),
     fields: [],

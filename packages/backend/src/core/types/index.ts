@@ -13,6 +13,7 @@ export type FormField = {
 };
 
 export type CreateForm = {
+  userId: string;
   formName: string;
   formId: string;
   fields: FormField[];

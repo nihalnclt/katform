@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 
 import authServiceInterface from "../../../application/services/authServiceInterface";
 import authServiceImpl from "../../services/authServiceImpl";
+import { BadRequestError, UnAuthError } from "../../common/errors";
 
 // TODO:
 // Implement TokenPayload Interface
@@ -13,23 +14,23 @@ declare global {
   }
 }
 
-export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
+export const userAuthMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const token = req.header("Authorization");
   const authService = authServiceInterface(authServiceImpl());
 
   if (!token) {
-    throw new Error("No access token found");
+    throw new BadRequestError("No access token found");
   }
 
   if (token.split(" ")[0] !== "Bearer") {
-    throw new Error("Invalid access token format");
+    throw new UnAuthError("Invalid access token format");
   }
 
   try {
-    const decoded = authService.verifyAccessToken(token.split(" ")[1]);
-    req.user = decoded;
+    const decoded: any = authService.verifyAccessToken(token.split(" ")[1]);
+    req.user = JSON.parse(JSON.parse(JSON.stringify(decoded?.payload)));
     next();
-  } catch (err) {
-    throw new Error("Token is not valid");
+  } catch (err: Error | any) {
+    throw new UnAuthError(err?.message || "Token not valid");
   }
 };

@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { FormField } from "../../../../core/types";
 
 interface FormDoc extends mongoose.Document {
+  userId: string;
   formName: string;
   formId: string;
   fields: FormField[];
@@ -15,6 +16,7 @@ interface FormModel extends mongoose.Model<FormDoc> {}
 
 const formSchema = new mongoose.Schema(
   {
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, index: true },
     formName: { type: String, required: true },
     formId: { type: String, required: true, unique: true },
     fields: {

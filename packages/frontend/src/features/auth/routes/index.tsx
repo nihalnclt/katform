@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 
 import { LoginPage } from "./LoginPage";
-import { RegisterPage } from "./RegisterPage";
+import { SignupPage } from "./SignupPage";
 
 export const AuthRoutes = () => {
   return (
     <Routes>
-      <Route path="register" element={<RegisterPage />} />
+      <Route path="signup" element={<SignupPage />} />
       <Route path="login" element={<LoginPage />} />
     </Routes>
   );

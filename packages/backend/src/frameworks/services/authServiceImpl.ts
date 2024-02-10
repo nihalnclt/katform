@@ -14,10 +14,10 @@ const authServiceImpl = () => {
   };
 
   const generateAccessToken = async (payload: string) => {
-    return jwt.sign({ payload }, envConfig.accessTokenKey, { expiresIn: "30s" });
+    return jwt.sign({ payload }, envConfig.accessTokenKey, { expiresIn: "300m" });
   };
 
-  const verifyAccessToken = async (token: string) => {
+  const verifyAccessToken = (token: string) => {
     return jwt.verify(token, envConfig.accessTokenKey);
   };
 
@@ -27,7 +27,7 @@ const authServiceImpl = () => {
     });
   };
 
-  const verifyRefreshToken = async (token: string) => {
+  const verifyRefreshToken = (token: string) => {
     return jwt.verify(token, envConfig.refreshTokenKey);
   };
 
